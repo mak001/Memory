@@ -1,0 +1,395 @@
+/* seperate styles allow the boy to expand vertically */
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #8BEA83;
+	
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */
+}
+
+html, body {
+	width: 100%;
+}
+
+html, body, body > * {
+	padding: 0;
+	margin: 0;
+}
+
+#top-bar {
+	font-size: 1.5em;
+	box-sizing: border-box;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	
+	background-color: #FFA172;
+	padding: 0.25em;
+}
+
+#top-bar > div {
+	margin: 0 0.5em;
+	padding: 0.25em;
+}
+
+.reset {
+	border: 1px solid #FF4A47;
+	background-color: #FF6459;
+	cursor: pointer;
+}
+
+#card-table {
+	max-width: 1090px;
+	margin: 0 auto;
+	
+	display: flex;
+	justify-content: center;
+	align-content: flex-start;
+	align-items: center;
+	flex-flow: row wrap;
+}
+
+.card-container {
+	width: 79px;
+	height: 123px;
+	margin: 10px;
+	position: relative;
+}
+
+.card-container .overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	transition: background-color 2s linear 500ms;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.card {
+	transition: transform 1s;
+	position: relative;
+	perspective: 300px;
+	transform-style: preserve-3d;
+	transform: rotateY(180deg);
+}
+
+.card, .card .front, .card .back {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+.card .front, .card .back {
+	display: block;
+	position: absolute;
+	backface-visibility: hidden;
+	background-size: contain;
+}
+
+.card .back {
+	transform: rotateY(180deg);
+	background-image: url(images/faces.png);
+	background-size: calc(79px * 13) calc(123px * 5);
+	background-position: -158px -492px;
+}
+
+.card .front {
+	background-image: url(images/faces.png);
+	background-size: calc(79px * 13) calc(123px * 5);
+}
+
+.card.flipped {
+	transform: rotateY(0);
+}
+
+.matched + .overlay {
+	background-color: rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+}
+
+.screen-overlay {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	opacity: 0;
+	
+	z-index: -2;
+	background-color: rgba(255, 255, 255, 0.75);
+	transition: opacity 1s, z-index 1s;
+}
+
+.screen-overlay.show {
+	z-index: 9998;
+	opacity: 1;
+}
+
+.screen-overlay-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	
+	height: 100px;
+	width: 75%;
+	margin: auto;
+	text-align: center;
+}
+
+.screen-overlay-text h2 {
+	font-weight: bold;
+	font-size: 3em;
+	margin: 0;
+}
+
+.screen-overlay-text .button {
+	display: inline-block;
+    padding: 0.25em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.revert {
+	border: 1px solid #47ffa6;
+	background-color: #59ffb7;
+	cursor: pointer;
+}
+
+.close {
+	border: 1px solid #47a0ff;
+	background-color: #59a1ff;
+	cursor: pointer;
+}
+
+/* Aces / Ones */
+#ace-of-spades .front {
+	background-position: 0 -369px;
+}
+
+#ace-of-clubs .front {
+	background-position: 0 0;
+}
+
+#ace-of-hearts .front {
+	background-position: 0 -246px;
+}
+
+#ace-of-diamonds .front {
+	background-position: 0 -123px;
+}
+
+/* Twos */
+#two-of-spades .front {
+	background-position: -79px -369px;
+}
+
+#two-of-clubs .front {
+	background-position: -79px 0;
+}
+
+#two-of-hearts .front {
+	background-position: -79px -246px;
+}
+
+#two-of-diamonds .front {
+	background-position: -79px -123px;
+}
+
+/* Threes */
+#three-of-spades .front {
+	background-position: -158px -369px;
+}
+
+#three-of-clubs .front {
+	background-position: -158px 0;
+}
+
+#three-of-hearts .front {
+	background-position: -158px -246px;
+}
+
+#three-of-diamonds .front {
+	background-position: -158px -123px;
+}
+
+/* Fours */
+#four-of-spades .front {
+	background-position: -237px -369px;
+}
+
+#four-of-clubs .front {
+	background-position: -237px 0;
+}
+
+#four-of-hearts .front {
+	background-position: -237px -246px;
+}
+
+#four-of-diamonds .front {
+	background-position: -237px -123px;
+}
+
+/* Fives */
+#five-of-spades .front {
+	background-position: -316px -369px;
+}
+
+#five-of-clubs .front {
+	background-position: -316px 0;
+}
+
+#five-of-hearts .front {
+	background-position: -316px -246px;
+}
+
+#five-of-diamonds .front {
+	background-position: -316px -123px;
+}
+
+/* Sixes */
+#six-of-spades .front {
+	background-position: -395px -369px;
+}
+
+#six-of-clubs .front {
+	background-position: -395px 0;
+}
+
+#six-of-hearts .front {
+	background-position: -395px -246px;
+}
+
+#six-of-diamonds .front {
+	background-position: -395px -123px;
+}
+
+/* Sevens */
+#seven-of-spades .front {
+	background-position: -474px -369px;
+}
+
+#seven-of-clubs .front {
+	background-position: -474px 0;
+}
+
+#seven-of-hearts .front {
+	background-position: -474px -246px;
+}
+
+#seven-of-diamonds .front {
+	background-position: -474px -123px;
+}
+
+/* Eights */
+#eight-of-spades .front {
+	background-position: -553px -369px;
+}
+
+#eight-of-clubs .front {
+	background-position: -553px 0;
+}
+
+#eight-of-hearts .front {
+	background-position: -553px -246px;
+}
+
+#eight-of-diamonds .front {
+	background-position: -553px -123px;
+}
+
+/* Nines */
+#nine-of-spades .front {
+	background-position: -632px -369px;
+}
+
+#nine-of-clubs .front {
+	background-position: -632px 0;
+}
+
+#nine-of-hearts .front {
+	background-position: -632px -246px;
+}
+
+#nine-of-diamonds .front {
+	background-position: -632px -123px;
+}
+
+/* tens */
+#ten-of-spades .front {
+	background-position: -711px -369px;
+}
+
+#ten-of-clubs .front {
+	background-position: -711px 0;
+}
+
+#ten-of-hearts .front {
+	background-position: -711px -246px;
+}
+
+#ten-of-diamonds .front {
+	background-position: -711px -123px;
+}
+
+/* Jacks / Elevens */
+#jack-of-spades .front {
+	background-position: -790px -369px;
+}
+
+#jack-of-clubs .front {
+	background-position: -790px 0;
+}
+
+#jack-of-hearts .front {
+	background-position: -790px -246px;
+}
+
+#jack-of-diamonds .front {
+	background-position: -790px -123px;
+}
+
+/* Queens / Twelves */
+#queen-of-spades .front {
+	background-position: -869px -369px;
+}
+
+#queen-of-clubs .front {
+	background-position: -869px 0;
+}
+
+#queen-of-hearts .front {
+	background-position: -869px -246px;
+}
+
+#queen-of-diamonds .front {
+	background-position: -869px -123px;
+}
+
+/* Kings / Thirteens */
+#king-of-spades .front {
+	background-position: -948px -369px;
+}
+
+#king-of-clubs .front {
+	background-position: -948px 0;
+}
+
+#king-of-hearts .front {
+	background-position: -948px -246px;
+}
+
+#king-of-diamonds .front {
+	background-position: -948px -123px;
+}
